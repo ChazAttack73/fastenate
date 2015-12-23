@@ -1,5 +1,34 @@
+* {
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
 body {
-  h1 {
-    background-color: #000000;
-  }
+  background-color: #999999;
+}
+
+.header {
+  flex: 0 0 100%;
+  height: 50px;
+  background-color: #888888;
+}
+
+.mainContentBox {
+  flex: 0 0 100%;
+  height: 400px;
+  background-color: red;
+}
+
+.contentBlock {
+  flex: 0 0 100%;
+  height: 100%;
+  background-color: orange;
+}
+
+.contentPic {
+  flex: 0 0 100%;
+  height: 60%;
+  background-color: yellow;
 }
