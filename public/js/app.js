@@ -1,6 +1,7 @@
 window.onload = function() {
-  $.getJSON('./api/random.json', function( data ) {
+  $.getJSON('./api/get_the_app.json', function( data ) {
     console.log( data.data );
+    for( var i = 0; i < 6; i++) {
 
     var randomChoice = Math.floor(Math.random()*50);
 
@@ -10,14 +11,12 @@ window.onload = function() {
     var score = data.data.children[randomChoice].data.score;
 
 //========== MAIN CONTENT BOX DIV
-    for( var i = 0; i < 6; i++) {
       var mainContentBox = $( '<div>' );
         mainContentBox
           .addClass( 'mainContentBox' )
         ;
 
         $( document.body ).append( mainContentBox );
-    }
 
 //========== CONTENT BLOCK DIV
       var contentBlock = $( '<div>' );
@@ -25,7 +24,7 @@ window.onload = function() {
           .addClass( 'contentBlock' )
         ;
 
-        $( '.mainContentBox' ).append( contentBlock );
+        mainContentBox.append( contentBlock );
 
 //========== CONTENT PICTURE DIV
       var contentPic = $( '<div>' );
@@ -33,8 +32,8 @@ window.onload = function() {
           .addClass( 'contentPic' )
         ;
 
-        $( '.contentBlock' ).append( contentPic );
-        $( '.contentPic' ).append( '<img src=" '+ thumbnailPic +' "/>' );
+        contentBlock.append( contentPic );
+        contentPic.append( '<img src=" '+ thumbnailPic +' "/>' );
 
 
 //========== CONTENT HEADER DIV
@@ -43,8 +42,8 @@ window.onload = function() {
           .addClass( 'contentHeader' )
         ;
 
-        $( '.contentBlock' ).append( contentHeader );
-        $( '.contentHeader' ).append( title );
+        contentBlock.append( contentHeader );
+        contentHeader.append( title );
 
 //========== CONTENT AUTHOR DIV
       var contentAuthor = $( '<div>' );
@@ -52,8 +51,8 @@ window.onload = function() {
           .addClass( 'contentAuthor' )
         ;
 
-        $( '.contentBlock' ).append( contentAuthor );
-        $( '.contentAuthor' ).append( 'by: ' + author );
+        contentBlock.append( contentAuthor );
+        contentAuthor.append( 'by: ' + author );
 
 //========== CONTENT DATE DIV
       var contentDate = $( '<div>' );
@@ -61,7 +60,7 @@ window.onload = function() {
           .addClass( 'contentDate' )
         ;
 
-        $( '.contentBlock' ).append( contentDate );
+        contentBlock.append( contentDate );
 
 //========== CONTENT VIEWS DIV
       var contentViews = $( '<div>' );
@@ -69,8 +68,8 @@ window.onload = function() {
           .addClass( 'contentViews' )
         ;
 
-        $( '.contentBlock' ).append( contentViews );
-        $( '.contentViews' ).append( score + ' views, wahoo!' );
+        contentBlock.append( contentViews );
+        contentViews.append( score + ' views, wahoo!' );
 
 //========== CONTENT TEXT DIV
       var contentText = $( '<div>' );
@@ -78,7 +77,8 @@ window.onload = function() {
           .addClass( 'contentText' )
         ;
 
-        $( '.contentBlock' ).append( contentText );
-        $( '.contentText' ).append( 'Aenean cursus nulla eget libero sodales convallis. Sed metus felis, porta auctor dignissim id, auctor vitae libero. Nunc mollis nec ligula sit amet ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rhoncus est nec sem viverra, at pulvinar est interdum. Nulla nec varius metus. Etiam sodales nunc ullamcorper erat ornare, at posuere nunc condimentum.' );
+        contentBlock.append( contentText );
+        contentText.append( 'Aenean cursus nulla eget libero sodales convallis. Sed metus felis, porta auctor dignissim id, auctor vitae libero. Nunc mollis nec ligula sit amet ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rhoncus est nec sem viverra, at pulvinar est interdum. Nulla nec varius metus. Etiam sodales nunc ullamcorper erat ornare, at posuere nunc condimentum.' );
+      }
   });
 };
