@@ -1,15 +1,49 @@
 window.onload = function() {
-  $.getJSON('./api/get_the_app.json', function( data ) {
-    console.log( data.data );
+  $.getJSON('./api/random.json', function( data ) {
+
+//========== Header Button Container for different API access
+    var headerBtnContainer = $( '<div>' );
+      headerBtnContainer
+        .addClass( 'headerBtnContainer' )
+      ;
+
+      $( '.header' ).append( headerBtnContainer );
+
+//========== Header Button for accessing Random API
+    var headerRandomBtn = $( '<div>' );
+      headerRandomBtn
+        .addClass( 'headerRandomBtn' )
+      ;
+
+      headerBtnContainer.append( headerRandomBtn );
+
+//========== Header Button for accessing Get the App API
+    var headerGetTheAppBtn = $( '<div>' );
+      headerGetTheAppBtn
+        .addClass( 'headerGetTheAppBtn' )
+      ;
+
+      headerBtnContainer.append( headerGetTheAppBtn );
+
+//========== Header Button for accessing My Boards API
+    var headerMyBoardsBtn = $( '<div>' );
+      headerMyBoardsBtn
+        .addClass( 'headerMyBoardsBtn' )
+      ;
+
+      headerBtnContainer.append( headerMyBoardsBtn );
+
+//========== Generate first batch of content
     for( var i = 0; i < 6; i++) {
 
     var randomChoice = Math.floor(Math.random()*50);
-
-    var thumbnailPic = data.data.children[randomChoice].data.thumbnail;
-    console.log(thumbnailPic);
-    var title = data.data.children[randomChoice].data.title;
-    var author = data.data.children[randomChoice].data.author;
-    var score = data.data.children[randomChoice].data.score;
+    var childData = data.data.children[randomChoice].data;
+    var thumbnailPic = childData.thumbnail;
+    var title = childData.title;
+    var author = childData.author;
+    var date = moment( childData.created, 'X' ).fromNow();
+    var score = childData.score;
+    var loremText = 'Aenean cursus nulla eget libero sodales convallis. Sed metus felis, porta auctor dignissim id, auctor vitae libero. Nunc mollis nec ligula sit amet ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rhoncus est nec sem viverra, at pulvinar est interdum. Nulla nec varius metus. Etiam sodales nunc ullamcorper erat ornare, at posuere nunc condimentum.';
 
 //========== MAIN CONTENT BOX DIV
       var mainContentBox = $( '<div>' );
@@ -62,6 +96,7 @@ window.onload = function() {
         ;
 
         contentBlock.append( contentDate );
+        contentDate.append( date );
 
 //========== CONTENT VIEWS DIV
       var contentViews = $( '<div>' );
@@ -70,7 +105,7 @@ window.onload = function() {
         ;
 
         contentBlock.append( contentViews );
-        contentViews.append( score + ' views, wahoo!' );
+        contentViews.append( score + ' views, yeye!' );
 
 //========== CONTENT TEXT DIV
       var contentText = $( '<div>' );
@@ -79,7 +114,7 @@ window.onload = function() {
         ;
 
         contentBlock.append( contentText );
-        contentText.append( 'Aenean cursus nulla eget libero sodales convallis. Sed metus felis, porta auctor dignissim id, auctor vitae libero. Nunc mollis nec ligula sit amet ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rhoncus est nec sem viverra, at pulvinar est interdum. Nulla nec varius metus. Etiam sodales nunc ullamcorper erat ornare, at posuere nunc condimentum.' );
+        contentText.append( loremText );
       }
   });
 };
