@@ -6,6 +6,7 @@ window.onload = function() {
     var randomChoice = Math.floor(Math.random()*50);
 
     var thumbnailPic = data.data.children[randomChoice].data.thumbnail;
+    console.log(thumbnailPic);
     var title = data.data.children[randomChoice].data.title;
     var author = data.data.children[randomChoice].data.author;
     var score = data.data.children[randomChoice].data.score;
